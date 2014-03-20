@@ -17,6 +17,17 @@ module.exports = function (grunt) {
 
     'nice-package': {
       all: {}
+    },
+
+    sass: {
+      dist: {
+        options: {
+          style: 'expanded'
+        },
+        files: {
+          'style/main.css': 'style/main.scss'
+        }
+      }
     }
   });
 
@@ -25,5 +36,5 @@ module.exports = function (grunt) {
   var plugins = require('matchdep').filterDev('grunt-*');
   plugins.forEach(grunt.loadNpmTasks);
 
-  grunt.registerTask('default', ['jshint', 'nice-package']);
+  grunt.registerTask('default', ['jshint', 'nice-package', 'sass']);
 };
