@@ -28,6 +28,16 @@ module.exports = function (grunt) {
           'style/main.css': 'style/main.scss'
         }
       }
+    },
+
+    'gh-pages': {
+      src: [
+        'favicon.ico',
+        'index.html',
+        'js/*.js',
+        'style/*.css',
+        'meta/*.*'
+      ]
     }
   });
 

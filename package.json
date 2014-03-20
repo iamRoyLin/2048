@@ -12,7 +12,8 @@
     "grunt-nice-package": "^0.2.3",
     "jshint-stylish": "^0.1.5",
     "matchdep": "^0.3.0",
-    "grunt-contrib-sass": "^0.7.3"
+    "grunt-contrib-sass": "^0.7.3",
+    "grunt-gh-pages": "^0.9.1"
   },
   "homepage": "https://github.com/bahmutov/2048",
   "keywords": [
