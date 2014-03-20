@@ -77,16 +77,19 @@ KeyboardInputManager.prototype.listen = function () {
   var gameContainer = document.getElementsByClassName("game-container")[0];
 
   gameContainer.addEventListener(this.eventTouchstart, function (event) {
-    if (( !window.navigator.msPointerEnabled && event.touches.length > 1) || event.targetTouches > 1) return;
-    
-    if(window.navigator.msPointerEnabled){
-        touchStartClientX = event.pageX;
-        touchStartClientY = event.pageY;
-    } else {
-        touchStartClientX = event.touches[0].clientX;
-        touchStartClientY = event.touches[0].clientY;
+    if ((!window.navigator.msPointerEnabled && event.touches.length > 1) ||
+      event.targetTouches > 1) {
+      return;
     }
-    
+
+    if (window.navigator.msPointerEnabled) {
+      touchStartClientX = event.pageX;
+      touchStartClientY = event.pageY;
+    } else {
+      touchStartClientX = event.touches[0].clientX;
+      touchStartClientY = event.touches[0].clientY;
+    }
+
     event.preventDefault();
   });
 
@@ -95,15 +98,16 @@ KeyboardInputManager.prototype.listen = function () {
   });
 
   gameContainer.addEventListener(this.eventTouchend, function (event) {
-    if (( !window.navigator.msPointerEnabled && event.touches.length > 0) || event.targetTouches > 0) return;
+    if ((!window.navigator.msPointerEnabled && event.touches.length > 0) ||
+      event.targetTouches > 0) return;
 
     var touchEndClientX, touchEndClientY;
-    if(window.navigator.msPointerEnabled){
-        touchEndClientX = event.pageX;
-        touchEndClientY = event.pageY;
+    if (window.navigator.msPointerEnabled) {
+      touchEndClientX = event.pageX;
+      touchEndClientY = event.pageY;
     } else {
-        touchEndClientX = event.changedTouches[0].clientX;
-        touchEndClientY = event.changedTouches[0].clientY;
+      touchEndClientX = event.changedTouches[0].clientX;
+      touchEndClientY = event.changedTouches[0].clientY;
     }
 
     var dx = touchEndClientX - touchStartClientX;

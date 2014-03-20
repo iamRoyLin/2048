@@ -221,17 +221,17 @@ GameManager.prototype.tileMatchesAvailable = function () {
   for (var x = 0; x < this.size; x++) {
     for (var y = 0; y < this.size; y++) {
       tile = this.grid.cellContent({ x: x, y: y });
+      if (!tile) {
+        continue;
+      }
+      for (var direction = 0; direction < 4; direction++) {
+        var vector = self.getVector(direction);
+        var cell   = { x: x + vector.x, y: y + vector.y };
 
-      if (tile) {
-        for (var direction = 0; direction < 4; direction++) {
-          var vector = self.getVector(direction);
-          var cell   = { x: x + vector.x, y: y + vector.y };
+        var other  = self.grid.cellContent(cell);
 
-          var other  = self.grid.cellContent(cell);
-
-          if (other && other.value === tile.value) {
-            return true; // These two tiles can be merged
-          }
+        if (other && other.value === tile.value) {
+          return true; // These two tiles can be merged
         }
       }
     }
