@@ -1,0 +1,29 @@
+{
+  "name": "2048",
+  "description": "2048 fork by Gleb Bahmutov",
+  "version": "0.0.0",
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/bahmutov/2048/issues"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-nice-package": "^0.2.3",
+    "jshint-stylish": "^0.1.5",
+    "matchdep": "^0.3.0"
+  },
+  "homepage": "https://github.com/bahmutov/2048",
+  "keywords": [
+    "2048"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bahmutov/2048.git"
+  },
+  "scripts": {
+    "test": "grunt"
+  }
+}
