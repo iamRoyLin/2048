@@ -36,8 +36,23 @@ module.exports = function (grunt) {
         'index.html',
         'js/*.js',
         'style/*.css',
-        'meta/*.*'
+        'meta/*.*',
+        'cache.manifest'
       ]
+    },
+
+    replace: {
+      cache: {
+        options: {
+          variables: {
+            timestamp: '@@timestamp: <%= grunt.template.today() %>'
+          },
+          prefix: '@@'
+        },
+        files: {
+          'cache.manifest': 'cache.manifest'
+        }
+      }
     }
   });
 

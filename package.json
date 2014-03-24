@@ -1,7 +1,7 @@
 {
   "name": "2048",
   "description": "2048 fork by Gleb Bahmutov",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": {
     "url": "https://github.com/bahmutov/2048/issues"
@@ -13,7 +13,8 @@
     "grunt-gh-pages": "^0.9.1",
     "grunt-nice-package": "^0.2.3",
     "jshint-stylish": "^0.1.5",
-    "matchdep": "^0.3.0"
+    "matchdep": "^0.3.0",
+    "grunt-replace": "^0.7.6"
   },
   "homepage": "https://github.com/bahmutov/2048",
   "keywords": [
