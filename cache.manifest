@@ -1,8 +1,15 @@
 CACHE MANIFEST
-# @@timestamp: Sun Mar 23 2014 22:56:02
+# @@timestamp: Sun Mar 23 2014 23:03:21
 
 CACHE:
 index.html
-js/*.js
-style/*.css
-meta/*.*
+js/animframe_polyfill.js
+js/application.js
+js/game_manager.js
+js/grid.js
+js/html_actuator.js
+js/keyboard_input_manager.js
+js/local_score_manager.js
+js/tile.js
+style/main.css
+meta/apple-touch-icon.png
