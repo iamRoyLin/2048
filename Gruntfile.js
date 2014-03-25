@@ -45,21 +45,19 @@ module.exports = function (grunt) {
       cache: {
         options: {
           variables: {
-            timestamp: '@@timestamp: <%= grunt.template.today() %>'
+            timestamp: '<%= grunt.template.today() %>'
           },
           prefix: '@@'
         },
         files: {
-          'cache.manifest': 'cache.manifest'
+          'cache.manifest': 'cache.manifest.source'
         }
       }
     }
   });
 
-  // Actually load this plugin's task(s).
-  grunt.loadTasks('tasks');
   var plugins = require('matchdep').filterDev('grunt-*');
   plugins.forEach(grunt.loadNpmTasks);
 
-  grunt.registerTask('default', ['jshint', 'nice-package', 'sass']);
+  grunt.registerTask('default', ['jshint', 'nice-package', 'sass', 'replace']);
 };
