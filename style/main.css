@@ -177,7 +177,7 @@ hr {
 }
 
 .game-container {
-  margin-top: 40px;
+  margin-top: 20px;
   position: relative;
   padding: 15px;
   cursor: default;
@@ -650,7 +650,7 @@ hr {
 }
 
 .game-explanation {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 620px) {
@@ -684,7 +684,7 @@ hr {
   }
 
   .game-container {
-    margin-top: 40px;
+    margin-top: 20px;
     position: relative;
     padding: 10px;
     cursor: default;
