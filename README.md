@@ -1,29 +1,21 @@
-# 2048
-A small clone of [1024](https://play.google.com/store/apps/details?id=com.veewo.a1024), based on [Saming's 2048](http://saming.fr/p/2048/) (also a clone).
+# 2048 5x5
 
-Made just for fun. [Play it here!](http://gabrielecirulli.github.io/2048/)
+A clone of [2048](https://github.com/gabrielecirulli/2048) with larger field and faster game pace.
 
-### Contributions
+Play the game [here](http://glebbahmutov.com/2048/), read how I cloned the 2048 in this
+[blog post](http://bahmutov.calepin.co/cloning-2048.html)
 
- - [TimPetricola](https://github.com/TimPetricola) added best score storage
- - [chrisprice](https://github.com/chrisprice) added custom code for swipe handling on mobile
- - [elektryk](https://github.com/elektryk) made swipes work on Windows Phone
+## Small print
 
-Many thanks to [rayhaanj](https://github.com/rayhaanj), [Mechazawa](https://github.com/Mechazawa), [grant](https://github.com/grant), [remram44](https://github.com/remram44) and [ghoullier](https://github.com/ghoullier) for the many other good contributions.
+Author: Gleb Bahmutov &copy; 2014
 
-### Screenshot
+* [@bahmutov](https://twitter.com/bahmutov)
+* [glebbahmutov.com](http://glebbahmutov.com)
+* [blog](http://bahmutov.calepin.co/)
 
-[![Screenshot](http://pictures.gabrielecirulli.com/2048-20140309-234100.png)](http://pictures.gabrielecirulli.com/2048-20140309-234100.png)
+License: MIT - do anything with the code, but don't blame me if it does not work.
 
-That screenshot is fake, by the way. I never reached 2048 :smile:
+Spread the word: tweet, star on github, etc.
 
-## Contributing
-Changes and improvements are more than welcome! Feel free to fork and open a pull request. Please make your changes in a specific branch and request to pull into `master`! If you can, please make sure the game fully works before sending the PR, as that will help speed up the process.
-
-You can find the same information in the [contributing guide.](https://github.com/gabrielecirulli/2048/blob/master/CONTRIBUTING.md)
-
-## License
-2048 is licensed under the [MIT license.](https://github.com/gabrielecirulli/2048/blob/master/LICENSE.txt)
-
-## Donations
-I made this in my spare time, and it's hosted on GitHub (which means I don't have any hosting costs), but if you enjoyed the game and feel like buying me coffee, you can donate at my BTC address: `1Ec6onfsQmoP9kkL3zkpB6c5sA4PVcXU2i`. Thank you very much!
+Support: if you find any problems with this module, email / tweet /
+[open issue](https://github.com/bahmutov/2048/issues) on Github
