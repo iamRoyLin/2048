@@ -13,3 +13,8 @@ js/local_score_manager.js
 js/tile.js
 style/main.css
 meta/apple-touch-icon.png
+
+NETWORK:
+# Always try to fetch analytics links
+# and any other external links
+*
