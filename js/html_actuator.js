@@ -3,6 +3,7 @@ function HTMLActuator() {
   this.scoreContainer   = document.querySelector(".score-container");
   this.bestContainer    = document.querySelector(".best-container");
   this.messageContainer = document.querySelector(".game-message");
+  this.undoButton       = document.querySelector("#undo-button");
 
   this.score = 0;
 }
@@ -23,6 +24,7 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 
     self.updateScore(metadata.score);
     self.updateBestScore(metadata.bestScore);
+    self.updateUndoButton(metadata.history);
 
     if (metadata.terminated) {
       if (metadata.over) {
@@ -122,6 +124,14 @@ HTMLActuator.prototype.updateScore = function (score) {
 
 HTMLActuator.prototype.updateBestScore = function (bestScore) {
   this.bestContainer.textContent = bestScore;
+};
+
+HTMLActuator.prototype.updateUndoButton = function (active) {
+  if (active) {    this.undoButton.setAttribute ("class", "active");
+  }
+  else {
+    this.undoButton.setAttribute ("class", "inactive");
+  }
 };
 
 HTMLActuator.prototype.message = function (won) {

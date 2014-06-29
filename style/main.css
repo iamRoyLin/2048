@@ -67,7 +67,7 @@ h1.title {
   text-align: right;
 }
 
-.score-container, .best-container {
+.score-container, .best-container, #undo-button {
   position: relative;
   display: inline-block;
   background: #bbada0;
@@ -81,6 +81,12 @@ h1.title {
   margin-top: 8px;
   text-align: center;
 }
+
+#undo-button {
+  font-size: 25px;
+  cursor: pointer;
+}
+
 .score-container:after, .best-container:after {
   position: absolute;
   width: 100%;

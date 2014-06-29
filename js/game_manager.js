@@ -1,14 +1,17 @@
-function GameManager(size, InputManager, Actuator, ScoreManager) {
+function GameManager(size, InputManager, Actuator, ScoreManager, BottomlessStack) {
   this.size         = size; // Size of the grid
   this.inputManager = new InputManager;
   this.scoreManager = new ScoreManager;
   this.actuator     = new Actuator;
+  
+  this.history      = new BottomlessStack (100);
 
   this.startTiles   = 2;
 
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
+  this.inputManager.on("undo", this.undo.bind(this));
 
   this.setup();
 }
@@ -32,6 +35,30 @@ GameManager.prototype.isGameTerminated = function () {
     return false;
   }
 };
+
+GameManager.prototype.undo = function () {
+  this.loadSavedState();
+  this.actuate();
+  this.actuator.clearMessage();
+};
+
+GameManager.prototype.saveState = function () {
+  this.history.push ({
+    grid  : this.grid.clone(),
+    score : this.score,
+    over  : this.over,
+    won   : this.won
+  });
+};
+
+GameManager.prototype.loadSavedState = function () {
+  var old_state = this.history.pop ();
+  this.grid  = old_state.grid;
+  this.score = old_state.score;
+  this.over  = old_state.over;
+  this.won   = old_state.won;
+};
+
 
 // Set up the game
 GameManager.prototype.setup = function () {
@@ -77,6 +104,8 @@ GameManager.prototype.actuate = function () {
     over:       this.over,
     won:        this.won,
     bestScore:  this.scoreManager.get(),
+    bestScore: this.scoreManager.get(),
+    history:   ! this.history.isEmpty(),
     terminated: this.isGameTerminated()
   });
 
@@ -111,6 +140,8 @@ GameManager.prototype.move = function (direction) {
   var vector     = this.getVector(direction);
   var traversals = this.buildTraversals(vector);
   var moved      = false;
+
+  this.saveState();
 
   // Save the current tile positions and remove merger information
   this.prepareTiles();
