@@ -87,6 +87,12 @@ h1.title {
   cursor: pointer;
 }
 
+#save-input {
+  width:99%;
+  margin-top:5px;
+  font-size:20px;
+}
+
 .score-container:after, .best-container:after {
   position: absolute;
   width: 100%;

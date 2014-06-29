@@ -12,6 +12,7 @@ function GameManager(size, InputManager, Actuator, ScoreManager, BottomlessStack
   this.inputManager.on("restart", this.restart.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
   this.inputManager.on("undo", this.undo.bind(this));
+  this.inputManager.on("load", this.load.bind(this));
 
   this.setup();
 }
@@ -42,13 +43,30 @@ GameManager.prototype.undo = function () {
   this.actuator.clearMessage();
 };
 
+GameManager.prototype.load = function () {
+  this.loadInputState();
+  this.actuate();
+  this.actuator.clearMessage();
+};
+
 GameManager.prototype.saveState = function () {
-  this.history.push ({
+  var state = {
     grid  : this.grid.clone(),
     score : this.score,
     over  : this.over,
     won   : this.won
-  });
+  }
+  this.history.push (state);
+};
+
+GameManager.prototype.displayState = function () {
+  var state = {
+    grid  : this.grid.clone(),
+    score : this.score,
+    over  : this.over,
+    won   : this.won
+  }
+  this.actuator.displayState(state);
 };
 
 GameManager.prototype.loadSavedState = function () {
@@ -59,6 +77,29 @@ GameManager.prototype.loadSavedState = function () {
   this.won   = old_state.won;
 };
 
+GameManager.prototype.loadInputState = function () {
+  var state = JSON.parse(this.actuator.saveInput.value);
+  this.history.push(state);
+  this.score = state.score;
+  this.over  = state.over;
+  this.won   = state.won;
+   
+  this.grid.cells = [];
+  for (var x = 0; x < this.size; x++) {
+    var row = [];
+    for (var y = 0; y < this.size; y++) {
+      if (!state.grid.cells[x][y]) {
+        row.push(null);
+      } else {
+        row.push(new Tile({'x':x,'y':y}, state.grid.cells[x][y].value));
+      }
+    }
+    this.grid.cells.push(row);
+  }
+   
+   
+   
+};
 
 // Set up the game
 GameManager.prototype.setup = function () {
@@ -185,7 +226,7 @@ GameManager.prototype.move = function (direction) {
 
   if (moved) {
     this.addRandomTile();
-    this.addRandomTile();
+    if (Math.random() < 0.33) this.addRandomTile();
 
     if (!this.movesAvailable()) {
       this.over = true; // Game over!
@@ -193,6 +234,8 @@ GameManager.prototype.move = function (direction) {
 
     this.actuate();
   }
+
+  this.displayState();
 };
 
 // Get the vector representing the chosen direction

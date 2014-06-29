@@ -4,6 +4,7 @@ function HTMLActuator() {
   this.bestContainer    = document.querySelector(".best-container");
   this.messageContainer = document.querySelector(".game-message");
   this.undoButton       = document.querySelector("#undo-button");
+  this.saveInput        = document.querySelector("#save-input");
 
   this.score = 0;
 }
@@ -132,6 +133,10 @@ HTMLActuator.prototype.updateUndoButton = function (active) {
   else {
     this.undoButton.setAttribute ("class", "inactive");
   }
+};
+
+HTMLActuator.prototype.displayState = function(state) {
+  this.saveInput.value = JSON.stringify(state);
 };
 
 HTMLActuator.prototype.message = function (won) {

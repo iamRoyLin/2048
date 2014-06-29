@@ -60,8 +60,8 @@ KeyboardInputManager.prototype.listen = function () {
         self.emit("move", mapped);
       }
 
-      if (event.which === 32) self.restart.bind(self)(event);
-      if (event.which === 8) self.undo.bind(self)(event);
+      // if (event.which === 32) self.restart.bind(self)(event);
+      if (event.which === 90) self.undo.bind(self)(event);
     }
   });
 
@@ -71,6 +71,11 @@ KeyboardInputManager.prototype.listen = function () {
   
   var undo = document.getElementById("undo-button");
   undo.addEventListener("click", this.undo.bind(this));
+  
+  var saveInput = document.getElementById("save-input");
+  saveInput.addEventListener("keypress", function(event) {
+  	if (event.which === 13) self.load.bind(self)(event);
+  });
 
   var keepPlaying = document.querySelector(".keep-playing-button");
   keepPlaying.addEventListener("click", this.keepPlaying.bind(this));
@@ -140,4 +145,9 @@ KeyboardInputManager.prototype.keepPlaying = function (event) {
 KeyboardInputManager.prototype.undo = function (event) {
   event.preventDefault();
   this.emit("undo");
+};
+
+KeyboardInputManager.prototype.load = function (event) {
+  event.preventDefault();
+  this.emit("load");
 };
